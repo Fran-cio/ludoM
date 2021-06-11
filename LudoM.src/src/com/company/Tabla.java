@@ -1,47 +1,47 @@
 package com.company;
 
 import javax.swing.*;
-import java.awt.Color;
-import java.awt.Dimension;
-
-/*public class Tabla extends javax.swing.JFrame {
-
-    private JPanel jPanel1;
-    private JPanel jPanel12;
-
-
-    public Tabla() {
-
-        this.setBounds(0, 0, 1024, 720);
-        this.setLocationRelativeTo(null);
-        this.jPanel1.setBounds(0, 0, 1024, 720);
-        this.jPanel1.setBackground(new java.awt.Color(190, 190, 190));
-
-
-        this.jPanel12.setBounds(0, 0, 12, 12);
-        this.jPanel12.setBackground(new java.awt.Color(100, 100, 100));
-
-    }
-
-}*/
+import java.awt.*;
 
 
 public class Tabla extends JFrame{
-    private JPanel jPanel1;
+  private JPanel tablero2;
+
+
     public Tabla(){
-        setSize(500,500);
-        setTitle("asdasd");
+
+        this.setLayout(null);
+        setTitle("Ludo Matic");
         setLocationRelativeTo(null);
+        this.setResizable(false);
         setMinimumSize(new Dimension(200,200));
-        this.getContentPane().setBackground(Color.blue);
+        setSize(800,800);
+        this.getContentPane().setBackground(Color.darkGray);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        iniciarComponentes();
-        this.jPanel1.setBackground(new java.awt.Color(190, 190, 190));
+        this.tablero2.setBounds(0, 0, 500, 500);
+        this.tablero2.setBackground(new java.awt.Color(190, 190, 190));
+        this.add(tablero2);
+        this.tablero2.setVisible(false);
+
+
+        JPanel[][] tablero1 = new JPanel[15][15];
+    for(int i=0;i<15;i++){
+        for (int j=0; j<15;j++){
+            tablero1[i][j]=new JPanel();
+            tablero1[i][j].setBounds((i+1)*40,(j+1)*40,40,40);
+            this.add(tablero1[i][j]);
+            tablero1[i][j].setBackground(new java.awt.Color(246, 246, 246));
+            tablero1[i][j].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        }
     }
 
-    private void iniciarComponentes(){
+
+
+
 
 
     }
+
+
 
 }
