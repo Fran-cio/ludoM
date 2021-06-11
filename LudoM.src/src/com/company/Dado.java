@@ -2,21 +2,14 @@ package com.company;
 
 public class Dado {
     private int numero;
-    private int idD;
 
     public Dado(){
-
+        numero=0;
     }
 
     public int tirarDado(){
-
-        return 0;
+        return (int)(Math.random()*6 + 1);
     }
-
-    public int getidD(){
-        return 0;
-    }
-
 
 }
 
