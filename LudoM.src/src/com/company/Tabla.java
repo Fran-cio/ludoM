@@ -1,5 +1,6 @@
 package com.company;
 
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -19,26 +20,32 @@ public class Tabla extends JFrame{
         this.getContentPane().setBackground(Color.darkGray);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.tablero2.setBounds(0, 0, 500, 500);
-        this.tablero2.setBackground(new java.awt.Color(190, 190, 190));
+        this.tablero2.setBackground(new Color(190, 190, 190));
+        this.tablero2.setVisible(true);
         this.add(tablero2);
-        this.tablero2.setVisible(false);
 
 
         JPanel[][] tablero1 = new JPanel[15][15];
-    for(int i=0;i<15;i++){
-        for (int j=0; j<15;j++){
-            tablero1[i][j]=new JPanel();
-            tablero1[i][j].setBounds((i+1)*40,(j+1)*40,40,40);
+    for(int i=0;i<15;i++) {
+        for (int j = 0; j < 15; j++) {
+            tablero1[i][j] = new JPanel();
+            tablero1[i][j].setBounds((i + 1) * 40, (j + 1) * 40, 40, 40);
             this.add(tablero1[i][j]);
-            tablero1[i][j].setBackground(new java.awt.Color(246, 246, 246));
+            if ((i <= 5 && j <= 5) || (i == 1 && j == 6) || ((i > 0 && i < 7) && j == 7)) {
+                tablero1[i][j].setBackground(new Color(3, 94, 23));
+            } else if ((i >= 9 && j <= 5) || (i == 8 && j == 1) || ((j > 0 && j < 7) && i == 7)) {
+                tablero1[i][j].setBackground(new Color(217, 4, 4));
+            } else if ((i <= 5 && j >= 9) || (i == 6 && j == 13) || ((j > 7 && j < 14) && i == 7)) {
+                tablero1[i][j].setBackground(new Color(232, 210, 3));
+            } else if ((i >= 9 && j >= 9) || (i == 13 && j == 8) || ((i > 7 && i < 14) && j == 7)) {
+                tablero1[i][j].setBackground(new Color(3, 41, 232));
+            } else {
+                tablero1[i][j].setBackground(new Color(253, 253, 253));
+            }
+
             tablero1[i][j].setBorder(BorderFactory.createLineBorder(Color.BLACK));
         }
     }
-
-
-
-
-
 
     }
 
