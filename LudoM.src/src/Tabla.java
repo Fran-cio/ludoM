@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class Tabla extends JFrame{
   private JPanel tablero2;
-
+    private Panel fondo;
 
     public Tabla(){
 
@@ -13,7 +13,8 @@ public class Tabla extends JFrame{
         setLocationRelativeTo(null);
         this.setResizable(false);
         setMinimumSize(new Dimension(200,200));
-        setSize(800,800);
+        this.setBounds(0, 0, 800, 800);
+        //setSize(800,800);
         this.getContentPane().setBackground(Color.darkGray);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.tablero2.setBounds(0, 0, 500, 500);
@@ -44,7 +45,13 @@ public class Tabla extends JFrame{
         }
     }
 
+    fondo = new Panel();
+    tablero1[1][8].add(fondo);
+    tablero1[1][8].setOpaque(true);
     }
+
+
+
 
 
 
