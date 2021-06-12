@@ -1,5 +1,5 @@
 package elements;
-
+//maxi fuma afuera
 import org.testng.internal.collections.Pair;
 import strategy.status.Status;
 
