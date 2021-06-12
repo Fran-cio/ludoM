@@ -4,7 +4,8 @@ import java.awt.*;
 
 public class Tabla extends JFrame{
   private JPanel tablero2;
-    private Panel fondo;
+    //private Panel fondo;
+    private JLabel jLabel1;
 
     public Tabla(){
 
@@ -45,9 +46,27 @@ public class Tabla extends JFrame{
         }
     }
 
-    fondo = new Panel();
+   /* fondo = new Panel();
     tablero1[1][8].add(fondo);
-    tablero1[1][8].setOpaque(true);
+    tablero1[1][8].setOpaque(true);*/
+
+        /*jLabel1 = new JLabel();
+        jLabel1.setIcon(new ImageIcon("C:\\Users\\Maximiliano\\Google Drive\\Facu\\Ing de software\\TestigosDeTuring\\Imagenes\\shield.png"));
+        tablero1[1][8].setOpaque(false);
+        tablero1[1][8].add(jLabel1);
+        tablero1[1][8].repaint();
+        tablero1[1][8].revalidate();
+        this.repaint();
+        this.revalidate();*/
+        jLabel1 = new JLabel();
+        Image img= new ImageIcon("C:\\Users\\Maximiliano\\Google Drive\\Facu\\Ing de software\\TestigosDeTuring\\Imagenes\\shield.png").getImage();
+        ImageIcon img2=new ImageIcon(img.getScaledInstance(tablero1[1][8].getWidth(), tablero1[1][8].getHeight(), Image.SCALE_SMOOTH));
+        jLabel1.setIcon(img2);
+        tablero1[1][8].add(jLabel1);
+
+
+
+
     }
 
 
