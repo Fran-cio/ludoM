@@ -1,6 +1,14 @@
 package com.company.strategy;
 
-public class RectaFinal {
+public class RectaFinal implements Status{
     private int Resto;
-    private String color;
+
+    public RectaFinal(int resto) {
+        Resto = resto;
+    }
+
+    @Override
+    public Status getStatus() {
+        return this;
+    }
 }
