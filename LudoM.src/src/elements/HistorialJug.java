@@ -1,6 +1,6 @@
-package com.company;
+package elements;
 
-import com.company.observer.Observador;
+import observer.Observador;
 
 public class HistorialJug implements Observador {
     @Override

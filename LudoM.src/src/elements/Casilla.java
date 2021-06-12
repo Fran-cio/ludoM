@@ -1,6 +1,6 @@
-package com.company;
+package elements;
 
-import com.company.strategy.Status;
+import strategy.status.Status;
 
 public class Casilla {
     private Status status;

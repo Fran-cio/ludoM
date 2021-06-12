@@ -1,18 +1,22 @@
-package com.company;
+package elements;
 
-import com.company.strategy.Status;
+import org.testng.internal.collections.Pair;
+import strategy.status.Status;
 
 public class Ficha {
-    private Status status;
+    private Status  status;
     private int     idF;
     private String  colorF;
     private int     posicionX;
     private int     posicionY;
+    private Pair    camino[];
+    private int     puntero;
 
     public Ficha(String color,int x,int y,int id){
         colorF=color;
         setPosicion(x,y);
         idF=id;
+        puntero=0;
     }
 
     public int getIdF() {
@@ -36,5 +40,21 @@ public class Ficha {
         status=newStatus;
     }
 
+    public Pair[] getCamino() {
+        return camino;
+    }
 
+    public void setCamino(Pair[] camino) {
+        this.camino = camino;
+    }
+
+    public int getPuntero() {
+        return puntero;
+    }
+    public void incPuntero() {
+        puntero++;
+    }
+    public void resetPuntero() {
+        puntero=0;
+    }
 }

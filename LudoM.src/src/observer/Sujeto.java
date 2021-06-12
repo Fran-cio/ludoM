@@ -1,4 +1,4 @@
-package com.company.observer;
+package observer;
 
 public interface Sujeto {
     public void registrar(Observador obs);

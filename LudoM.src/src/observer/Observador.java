@@ -1,4 +1,4 @@
-package com.company.observer;
+package observer;
 
 public interface Observador {
     public void actualizar();

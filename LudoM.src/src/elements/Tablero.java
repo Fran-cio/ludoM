@@ -1,16 +1,16 @@
-package com.company;
+package elements;
 
-
-import com.company.strategy.*;
+import strategy.status.*;
 
 public class Tablero{
-    protected Casilla tablero[][];
+    protected Casilla[][] tablero;
 
     public Tablero() {
         tablero= new Casilla[15][15];
         for(int i=0; i!=15 ;i++) {
             for (int j = 0; j != 15; j++) {
                 tablero[i][j]= new Casilla();
+                tablero[i][j].setStatus(new Moving());
             }
         }
         setWaits();
@@ -73,6 +73,7 @@ public class Tablero{
     public Casilla[][] getTablero() {
         return tablero;
     }
+
     public void Setficha(int x, int y, Ficha ficha){
         tablero[x][y].setFicha(ficha);
     }

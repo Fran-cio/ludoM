@@ -1,4 +1,4 @@
-package com.company.menu;
+package menu;
 
 public class PantallaConfig {
 }

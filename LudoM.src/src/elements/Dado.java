@@ -1,4 +1,4 @@
-package com.company;
+package elements;
 
 public class Dado {
     private int numero;

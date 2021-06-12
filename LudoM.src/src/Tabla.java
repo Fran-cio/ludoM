@@ -1,6 +1,3 @@
-package com.company;
-
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -21,7 +18,7 @@ public class Tabla extends JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.tablero2.setBounds(0, 0, 500, 500);
         this.tablero2.setBackground(new Color(190, 190, 190));
-        this.tablero2.setVisible(true);
+        this.tablero2.setVisible(false);
         this.add(tablero2);
 
 

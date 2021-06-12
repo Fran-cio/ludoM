@@ -1,7 +1,8 @@
-package com.company;
+package elements;
 
-import com.company.observer.Observador;
-import com.company.observer.Sujeto;
+import observer.Observador;
+import observer.Sujeto;
+import strategy.jugador.Jugador;
 
 import java.util.Vector;
 
