@@ -25,9 +25,10 @@ public class Partida implements Sujeto {
     public Partida(int numeroJugadores){
         tablero=new Tablero();
         dado=   new Dado();
+        terminada=false;
         arrJugadores= new Jugador[numeroJugadores];
 
-        if(numeroJugadores>1||5>numeroJugadores){
+        if(numeroJugadores>1&&5>numeroJugadores){
            for(int i=0; i!=numeroJugadores; i++){
                arrJugadores[i]=new Jugador(i+1,tablero);
            }
@@ -42,7 +43,6 @@ public class Partida implements Sujeto {
 
     public void iniciarPartida(){
         nextplayer=0;
-        terminada=false;
         while(!terminada){
             if(nextplayer==arrJugadores.length){
                 nextplayer=0;
