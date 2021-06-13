@@ -7,7 +7,7 @@ import java.util.Vector;
 
 
 
-public class Partida implements Sujeto {
+public class Partida implements Sujeto,Runnable {
     protected final Dado          dado;
     protected Tablero             tablero;
     protected Jugador[]           arrJugadores;
@@ -16,8 +16,10 @@ public class Partida implements Sujeto {
     protected int                 tiempoPart;
     protected boolean             terminada;
     protected int                 nextplayer;
+    public final Thread              thread;
 
     public Partida(int numeroJugadores){
+        thread= new Thread(this,"Partida");
         tablero=new Tablero(this);
         dado=   new Dado();
         terminada=false;
@@ -33,10 +35,11 @@ public class Partida implements Sujeto {
             System.out.println("Inserte Numero de jugadores valido");
             terminar();
         }
-
+        thread.start();
     }
 
-    public void iniciarPartida(){
+    @Override
+    public void run() {
         nextplayer=0;
         while(!terminada){
             if(nextplayer==arrJugadores.length){
@@ -61,6 +64,17 @@ public class Partida implements Sujeto {
         terminada=true;
         //System.exit(0);
     }
+    public void setNum(int n){
+        arrJugadores[nextplayer].setNum(n);
+    }
+
+    public Jugador[] getArrJugadores() {
+        return arrJugadores;
+    }
+
+    public int getNextplayer() {
+        return nextplayer;
+    }
 
     @Override
     public void registrar(Observador obs) {
@@ -76,4 +90,5 @@ public class Partida implements Sujeto {
     public void notificar() {
 
     }
+
 }

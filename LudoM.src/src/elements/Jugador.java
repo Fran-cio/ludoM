@@ -2,13 +2,10 @@ package elements;
 
 import strategy.jugador.*;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
 public class Jugador {
     protected Player player;
     protected boolean estado;
+    public      Object       num= new Object();
 
 
     public Jugador(int id, Tablero tablero) {
@@ -34,38 +31,33 @@ public class Jugador {
         this.player = player;
     }
 
-    public void moverFicha(Dado dado,Tablero tablero) {
+    public synchronized void moverFicha(Dado dado,Tablero tablero) {
         int resultado = dado.tirarDado();
         System.out.println("Dado: "+resultado);
         boolean hecha = false;
         if(player.getFichas()[0].getStatus().jugadaposible(resultado)||
                 player.getFichas()[1].getStatus().jugadaposible(resultado)||
                 player.getFichas()[2].getStatus().jugadaposible(resultado)||
-                player.getFichas()[3].getStatus().jugadaposible(resultado)) {
+                player.getFichas()[3].getStatus().jugadaposible(resultado)){
             while (!hecha) {
                 System.out.println("Elija la ficha:");
-                InputStreamReader isr = new InputStreamReader(System.in);
-                BufferedReader flujoE = new BufferedReader(isr);
                 try {
-                    String sdato = flujoE.readLine();
-                    if(sdato.equals("1")||sdato.equals("2")||sdato.equals("3")||sdato.equals("4")) {
-                        int num = Integer.parseInt(sdato);
-                            hecha = player.getFichas()[num - 1].getStatus().mover(tablero, player.getFichas()[num - 1], resultado);
+                    synchronized (tablero.partida.thread) {
+                        tablero.partida.thread.wait();
                     }
-                    else{
-                            System.out.println("Inserte numero entre 1 y 4");
-                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
-                catch(IOException cc){
-
-                }
-                if(resultado==6 && hecha){
-                    moverFicha(dado,tablero);
-                }
+                hecha = player.getFichas()[(int)num - 1].getStatus().mover(tablero, player.getFichas()[(int)num - 1], resultado);
+            }
+            if (resultado == 6 && hecha) {
+                moverFicha(dado,tablero);
             }
         }
-
         //Aca deberia implementar una decision de que pieza se puede mover
+    }
+    public void setNum(int n){
+        num=n;
     }
 
     public Player getPlayer() {

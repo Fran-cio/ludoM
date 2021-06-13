@@ -93,6 +93,11 @@ public class Tablero{
     public Casilla[][] getTablero() {
         return tablero;
     }
+
+    public Partida getPartida() {
+        return partida;
+    }
+
     public Casilla getCasilla(int x, int y){
         return tablero[x][y];
     }

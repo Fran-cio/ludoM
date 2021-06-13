@@ -1,4 +1,5 @@
 import elements.Partida;
+import vista.Ventana;
 
 public class Main {
 
@@ -6,8 +7,7 @@ public class Main {
 
         //new Tabla().setVisible(true);
         Partida partida= new Partida(4);
-        partida.iniciarPartida();
-
+        Ventana ventana=new Ventana(partida);
     }
 }
 
