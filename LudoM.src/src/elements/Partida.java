@@ -27,7 +27,7 @@ public class Partida implements Sujeto {
         dado=   new Dado();
         arrJugadores= new Jugador[numeroJugadores];
 
-        if(numeroJugadores>1||4<numeroJugadores){
+        if(numeroJugadores>1||5>numeroJugadores){
            for(int i=0; i!=numeroJugadores; i++){
                arrJugadores[i]=new Jugador(i+1,tablero);
            }
