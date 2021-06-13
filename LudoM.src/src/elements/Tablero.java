@@ -5,6 +5,7 @@ import strategy.status.*;
 public class Tablero{
     protected Casilla[][] tablero;
     protected Partida     partida;
+    protected Jugador     winner;
 
     public Tablero() {
         tablero= new Casilla[15][15];
@@ -88,7 +89,8 @@ public class Tablero{
         tablero[x][y].removeFicha(ficha);
     }
 
-    public void terminar(){
+    public void terminar(String winner){
+        System.out.println("And The Winner is Player "+winner+", Congrats, you win a coquita de vidrio");
         partida.terminar();
     }
 }

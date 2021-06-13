@@ -5,8 +5,8 @@ import strategy.status.Status;
 import java.util.Vector;
 
 public class Casilla {
-    private Status status;
-    private Vector<Ficha>  acumfichas;
+    protected Status status;
+    protected Vector<Ficha>  acumfichas;
 
     public Casilla() {
         acumfichas= new Vector<>();
@@ -32,7 +32,7 @@ public class Casilla {
             f.setStatus(this.status);
             acumfichas.add(f);
             if(status.getState().equals("Win") && acumfichas.size()==3){
-                tablero.terminar();
+                tablero.terminar(acumfichas.firstElement().getColorF());
             }
         }
         else{
