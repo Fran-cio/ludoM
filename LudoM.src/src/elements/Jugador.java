@@ -7,8 +7,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Jugador {
-    private Player player;
-    private boolean estado;
+    protected Player player;
+    protected boolean estado;
 
 
     public Jugador(int id, Tablero tablero) {

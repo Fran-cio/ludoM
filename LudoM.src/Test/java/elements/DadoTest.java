@@ -9,7 +9,7 @@ class DadoTest {
     Dado dado = new Dado();
 
     @Test
-    void tirarDado() {
+    void U_tirarDado() {
         int a=dado.tirarDado();
         assertTrue(a>0&&a<7);
     }

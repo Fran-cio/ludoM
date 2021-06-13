@@ -31,7 +31,7 @@ public class Casilla {
             f.incPuntero(n);
             f.setStatus(this.status);
             acumfichas.add(f);
-            if(status.getState().equals("Win") && acumfichas.size()==3){
+            if(status.getState().equals("Win") && acumfichas.size()==4){
                 tablero.terminar(acumfichas.firstElement().getColorF());
             }
         }

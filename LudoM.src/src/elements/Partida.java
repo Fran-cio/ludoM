@@ -8,34 +8,30 @@ import java.util.Vector;
 
 
 public class Partida implements Sujeto {
-    private final Dado          dado;
-    private Tablero             tablero;
-    private Jugador[]           arrJugadores;
-    private Vector<Ficha>       arrFichas;
-    private Vector<Observador>  arrObserver;
-    private int                 tiempoPart;
-    private boolean             terminada;
-    private int                 nextplayer;
-
-
-
-    public static final String ANSI_BLUE = "\u001B[34m";
+    protected final Dado          dado;
+    protected Tablero             tablero;
+    protected Jugador[]           arrJugadores;
+    protected Vector<Ficha>       arrFichas;
+    protected Vector<Observador>  arrObserver;
+    protected int                 tiempoPart;
+    protected boolean             terminada;
+    protected int                 nextplayer;
 
 
     public Partida(int numeroJugadores){
-        tablero=new Tablero();
+        tablero=new Tablero(this);
         dado=   new Dado();
         terminada=false;
 
-
         if(numeroJugadores>1&&5>numeroJugadores){
+
             arrJugadores= new Jugador[numeroJugadores];
+
             for(int i=0; i!=numeroJugadores; i++){
-
                arrJugadores[i]=new Jugador(i+1,tablero);
-           }
-        }
+            }
 
+        }
 
         else{
             System.out.println("Inserte Numero de jugadores valido");
@@ -67,7 +63,7 @@ public class Partida implements Sujeto {
 
     public void terminar(){
         terminada=true;
-        System.exit(0);
+        //System.exit(0);
     }
 
     @Override

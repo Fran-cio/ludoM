@@ -7,10 +7,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TableroTest {
-    Tablero tab= new Tablero();
-    Casilla[][] casillasTest =tab.getTablero();
+
     @Test
-    void ArrancarTablero() {
+    void U_ArrancarTablero() {
+        Tablero tab= new Tablero();
+        Casilla[][] casillasTest =tab.getTablero();
+
         Status a= new Moving();
         Status b= new OutOfBounds();
         Status c= new RectaFinal(2);
@@ -25,7 +27,10 @@ class TableroTest {
     }
 
     @Test
-    void CheckResto(){
+    void U_CheckResto(){
+        Tablero tab= new Tablero();
+        Casilla[][] casillasTest =tab.getTablero();
+
         Status c= new RectaFinal(2);
         assertEquals(2,casillasTest[4][7].getStatus().getResto());
     }

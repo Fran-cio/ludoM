@@ -4,13 +4,18 @@ import org.testng.internal.collections.Pair;
 import strategy.status.Status;
 
 public class Ficha {
-    private Status          status;
-    private final int       idF;
-    private final String    colorF;
-    private Pair[]          camino;
-    private int             puntero;
+    protected Status          status;
+    protected final int       idF;
+    protected final String    colorF;
+    protected Pair[]          camino;
+    protected int             puntero;
 
-    public Ficha(String color,int id){
+    public Ficha() {
+        colorF=null;
+        idF=0;
+    }
+
+    public Ficha(String color, int id){
         colorF=color;
         idF=id;
         puntero=0;

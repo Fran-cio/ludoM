@@ -7,6 +7,21 @@ public class Tablero{
     protected Partida     partida;
     protected Jugador     winner;
 
+    public Tablero(Partida part) {
+        partida=part;
+        tablero= new Casilla[15][15];
+        for(int i=0; i!=15 ;i++) {
+            for (int j = 0; j != 15; j++) {
+                tablero[i][j]= new Casilla();
+                tablero[i][j].setStatus(new Moving());
+            }
+        }
+        setWaits();
+        setProtecteds();
+        setRectaFinal();
+        setWin();
+        setOutOfBounds();
+    }
     public Tablero() {
         tablero= new Casilla[15][15];
         for(int i=0; i!=15 ;i++) {
