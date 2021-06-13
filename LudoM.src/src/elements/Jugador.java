@@ -48,14 +48,17 @@ public class Jugador {
                 BufferedReader flujoE = new BufferedReader(isr);
                 try {
                     String sdato = flujoE.readLine();
+                    if(sdato.equals("1")||sdato.equals("2")||sdato.equals("3")||sdato.equals("4")) {
                         int num = Integer.parseInt(sdato);
-                        if (num > 0 && num <= 4) {
                             hecha = player.getFichas()[num - 1].getStatus().mover(tablero, player.getFichas()[num - 1], resultado);
-                        } else {
+                    }
+                    else{
                             System.out.println("Inserte numero entre 1 y 4");
-                        }
+                    }
                 }
-                catch(IOException cc){}
+                catch(IOException cc){
+
+                }
                 if(resultado==6 && hecha){
                     moverFicha(dado,tablero);
                 }
