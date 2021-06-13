@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 
 
 public class Tabla extends JFrame{
@@ -57,7 +58,7 @@ public class Tabla extends JFrame{
     tablero1[1][8].setOpaque(true);*/
 
         jLabel1 = new JLabel(); //verde 2
-        jLabel1.setIcon(new ImageIcon("C:\\Users\\Maximiliano\\Google Drive\\Facu\\Ing de software\\TestigosDeTuring\\Imagenes\\shield.png"));
+        jLabel1.setIcon(new ImageIcon("C:\\Users\\Hugo\\Desktop\\Facultad\\Ing Software\\LUDO MATIC\\Ludito\\Imagenes\\shield.png\\shield.png"));
         tablero1[2][8].setOpaque(false);
         tablero1[2][8].add(jLabel1);
         tablero1[2][8].repaint();
@@ -66,7 +67,7 @@ public class Tabla extends JFrame{
         this.revalidate();
 
         jLabel2 = new JLabel(); //rojo 2
-        jLabel2.setIcon( new ImageIcon("C:\\Users\\Maximiliano\\Google Drive\\Facu\\Ing de software\\TestigosDeTuring\\Imagenes\\shield.png"));
+        jLabel2.setIcon( new ImageIcon("jetbrains://idea//navigate//reference?project=Ludito&path=Imagenes//shield.png"));
         tablero1[6][2].setOpaque(false);
         tablero1[6][2].add(jLabel2);
         tablero1[6][2].repaint();
@@ -75,13 +76,14 @@ public class Tabla extends JFrame{
         this.revalidate();
 
         jLabel3 = new JLabel(); //verde salida
-        jLabel3.setIcon( new ImageIcon("C:\\Users\\Maximiliano\\Google Drive\\Facu\\Ing de software\\TestigosDeTuring\\Imagenes\\shield.png"));
+        jLabel3.setIcon( new ImageIcon("Imagenes/shield.png"));
         tablero1[1][6].setOpaque(false);
         tablero1[1][6].add(jLabel3);
         tablero1[1][6].repaint();
         tablero1[1][6].revalidate();
         this.repaint();
         this.revalidate();
+
 
         jLabel4 = new JLabel(); //rojo salida
         jLabel4.setIcon( new ImageIcon("C:\\Users\\Maximiliano\\Google Drive\\Facu\\Ing de software\\TestigosDeTuring\\Imagenes\\shield.png"));
@@ -112,7 +114,7 @@ public class Tabla extends JFrame{
         this.revalidate();
 
         jLabel7 = new JLabel(); //azul 2
-        jLabel7.setIcon( new ImageIcon("C:\\Users\\Maximiliano\\Google Drive\\Facu\\Ing de software\\TestigosDeTuring\\Imagenes\\shield.png"));
+        jLabel7.setIcon( new ImageIcon("C:\\Users\\Hugo\\Desktop\\Facultad\\Ing Software\\LUDO MATIC\\Ludito\\Imagenes\\shield.png"));
         tablero1[12][6].setOpaque(false);
         tablero1[12][6].add(jLabel7);
         tablero1[12][6].repaint();
@@ -121,7 +123,7 @@ public class Tabla extends JFrame{
         this.revalidate();
 
         jLabel8 = new JLabel(); //amarillo salida
-        jLabel8.setIcon( new ImageIcon("\\$PROJECT_DIR$\\Imagenes\\shield.png"));
+        jLabel8.setIcon( new ImageIcon("C:/Users/Hugo/Desktop/Facultad/Ing Software/LUDO MATIC/Ludito/ImagenesImagenes/shield.png"));
         tablero1[6][13].setOpaque(false);
         tablero1[6][13].add(jLabel8);
         tablero1[6][13].repaint();
