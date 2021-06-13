@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class Tabla extends JFrame{
   private JPanel tablero2;
-    //private Panel fondo;
+
     private JLabel jLabel1;
 
     public Tabla(){
@@ -18,7 +18,7 @@ public class Tabla extends JFrame{
         //setSize(800,800);
         this.getContentPane().setBackground(Color.darkGray);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.tablero2.setBounds(0, 0, 500, 500);
+        this.tablero2.setBounds(40, 40, 40, 40);
         this.tablero2.setBackground(new Color(190, 190, 190));
         this.tablero2.setVisible(false);
         this.add(tablero2);
@@ -29,6 +29,7 @@ public class Tabla extends JFrame{
         for (int j = 0; j < 15; j++) {
             tablero1[i][j] = new JPanel();
             tablero1[i][j].setBounds((i + 1) * 40, (j + 1) * 40, 40, 40);
+
             this.add(tablero1[i][j]);
             if ((i <= 5 && j <= 5) || (i == 1 && j == 6) || ((i > 0 && i < 7) && j == 7)) {
                 tablero1[i][j].setBackground(new Color(3, 94, 23));
@@ -46,24 +47,19 @@ public class Tabla extends JFrame{
         }
     }
 
-   /* fondo = new Panel();
-    tablero1[1][8].add(fondo);
-    tablero1[1][8].setOpaque(true);*/
 
-        /*jLabel1 = new JLabel();
-        jLabel1.setIcon(new ImageIcon("C:\\Users\\Maximiliano\\Google Drive\\Facu\\Ing de software\\TestigosDeTuring\\Imagenes\\shield.png"));
-        tablero1[1][8].setOpaque(false);
-        tablero1[1][8].add(jLabel1);
-        tablero1[1][8].repaint();
-        tablero1[1][8].revalidate();
-        this.repaint();
-        this.revalidate();*/
         jLabel1 = new JLabel();
-        Image img= new ImageIcon("C:\\Users\\Maximiliano\\Google Drive\\Facu\\Ing de software\\TestigosDeTuring\\Imagenes\\shield.png").getImage();
-        ImageIcon img2=new ImageIcon(img.getScaledInstance(tablero1[1][8].getWidth(), tablero1[1][8].getHeight(), Image.SCALE_SMOOTH));
-        jLabel1.setIcon(img2);
-        tablero1[1][8].add(jLabel1);
+        jLabel1.setLayout(null);
 
+        Image img= new ImageIcon("C:\\Users\\Maximiliano\\Google Drive\\Facu\\Ing de software\\TestigosDeTuring\\Imagenes\\shield.png").getImage();
+        //ImageIcon img2=new ImageIcon(img.getScaledInstance(tablero1[1][8].getWidth(),tablero1[1][8].getHeight(), Image.SCALE_SMOOTH));
+        ImageIcon img2=new ImageIcon(img.getScaledInstance(tablero1[1][9].getWidth(),tablero1[1][9].getHeight(), Image.SCALE_SMOOTH));
+
+        jLabel1.setIcon(img2);
+
+        tablero1[1][9].add(jLabel1);
+        //tablero2.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        //tablero2.add(jLabel1);*/
 
 
 
