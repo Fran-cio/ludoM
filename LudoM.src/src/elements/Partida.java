@@ -26,13 +26,16 @@ public class Partida implements Sujeto {
         tablero=new Tablero();
         dado=   new Dado();
         terminada=false;
-        arrJugadores= new Jugador[numeroJugadores];
+
 
         if(numeroJugadores>1&&5>numeroJugadores){
-           for(int i=0; i!=numeroJugadores; i++){
+            arrJugadores= new Jugador[numeroJugadores];
+            for(int i=0; i!=numeroJugadores; i++){
+
                arrJugadores[i]=new Jugador(i+1,tablero);
            }
         }
+
 
         else{
             System.out.println("Inserte Numero de jugadores valido");

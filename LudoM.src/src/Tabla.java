@@ -14,6 +14,17 @@ public class Tabla extends JFrame{
     private JLabel jLabel6;
     private JLabel jLabel7;
     private JLabel jLabel8;
+
+
+    class Shield extends JPanel{
+        private Image imagen1;
+        public void paint( Graphics g){
+            imagen1= new ImageIcon(getClass().getResource("C:\\Users\\Hugo\\Desktop\\Facultad\\Ing Software\\LUDO MATIC\\Ludito\\Imagenes\\shield.png")).getImage();
+            g.drawImage(imagen1, 0, 0, getWidth(), getHeight(), this);
+            super.paint(g);
+
+    }
+}
     public Tabla(){
 
         this.setLayout(null);
@@ -75,8 +86,9 @@ public class Tabla extends JFrame{
         this.repaint();
         this.revalidate();
 
+
         jLabel3 = new JLabel(); //verde salida
-        jLabel3.setIcon( new ImageIcon("Imagenes/shield.png"));
+        jLabel3.setIcon( new ImageIcon("/Imagenes/shield.png"));
         tablero1[1][6].setOpaque(false);
         tablero1[1][6].add(jLabel3);
         tablero1[1][6].repaint();

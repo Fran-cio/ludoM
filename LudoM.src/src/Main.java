@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) {
 
         //new Tabla().setVisible(true);
-        Partida partida= new Partida(3);
+        Partida partida= new Partida(-2);
         partida.iniciarPartida();
 
     }
