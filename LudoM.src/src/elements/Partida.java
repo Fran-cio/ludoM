@@ -17,20 +17,16 @@ public class Partida implements Sujeto {
     protected boolean             terminada;
     protected int                 nextplayer;
 
-
     public Partida(int numeroJugadores){
         tablero=new Tablero(this);
         dado=   new Dado();
         terminada=false;
 
         if(numeroJugadores>1&&5>numeroJugadores){
-
             arrJugadores= new Jugador[numeroJugadores];
-
             for(int i=0; i!=numeroJugadores; i++){
                arrJugadores[i]=new Jugador(i+1,tablero);
             }
-
         }
 
         else{

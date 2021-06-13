@@ -30,6 +30,7 @@ public class RectaFinal implements Status{
             }
             return true;
         }
+        System.out.println("No puedo porque me faltan "+Resto+" para llegar al final");
         return false;
     }
 
