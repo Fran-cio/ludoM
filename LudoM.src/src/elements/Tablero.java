@@ -4,6 +4,7 @@ import strategy.status.*;
 
 public class Tablero{
     protected Casilla[][] tablero;
+    protected Partida     partida;
 
     public Tablero() {
         tablero= new Casilla[15][15];
@@ -18,6 +19,9 @@ public class Tablero{
         setRectaFinal();
         setWin();
         setOutOfBounds();
+    }
+    public void siguienteJugada(){
+
     }
 
     public void setWaits(){
@@ -73,8 +77,18 @@ public class Tablero{
     public Casilla[][] getTablero() {
         return tablero;
     }
+    public Casilla getCasilla(int x, int y){
+        return tablero[x][y];
+    }
 
-    public void Setficha(int x, int y, Ficha ficha){
-        tablero[x][y].setFicha(ficha);
+    public void Setficha(int x, int y,Ficha ficha, int n){
+        tablero[x][y].setFicha(ficha,this,n);
+    }
+    public void RemoveFicha(int x,int y, Ficha ficha){
+        tablero[x][y].removeFicha(ficha);
+    }
+
+    public void terminar(){
+        partida.terminar();
     }
 }

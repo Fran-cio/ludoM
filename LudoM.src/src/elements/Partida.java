@@ -2,25 +2,56 @@ package elements;
 
 import observer.Observador;
 import observer.Sujeto;
-import strategy.jugador.Jugador;
 
 import java.util.Vector;
 
+
+
 public class Partida implements Sujeto {
-    private Dado                dado;
+    private final Dado          dado;
     private Tablero             tablero;
-    private Vector<Jugador>     arrJugadores;
+    private Jugador[]           arrJugadores;
     private Vector<Ficha>       arrFichas;
     private Vector<Observador>  arrObserver;
     private int                 tiempoPart;
+    private boolean             terminada;
+    private int                 nextplayer;
 
 
-    public Partida(){
+
+    public static final String ANSI_BLUE = "\u001B[34m";
+
+
+    public Partida(int numeroJugadores){
+        tablero=new Tablero();
+        dado=   new Dado();
+        arrJugadores= new Jugador[numeroJugadores];
+
+        if(numeroJugadores>1){
+           for(int i=0; i!=numeroJugadores; i++){
+               arrJugadores[i]=new Jugador(i+1,tablero);
+           }
+        }
+
+        else{
+            System.out.println("Inserte Numero de jugadores valido");
+            terminar();
+        }
 
     }
 
     public void iniciarPartida(){
-
+        nextplayer=0;
+        terminada=false;
+        while(!terminada){
+            if(nextplayer==arrJugadores.length){
+                nextplayer=0;
+            }
+            System.out.println(arrJugadores[nextplayer].getPlayer().getANSI()+"jugador "+arrJugadores[nextplayer].getPlayer().getColor());
+            arrJugadores[nextplayer].moverFicha(dado,tablero);
+            System.out.println();
+            nextplayer++;
+        }
     }
 
     public void pausar(){
@@ -32,7 +63,8 @@ public class Partida implements Sujeto {
     }
 
     public void terminar(){
-
+        terminada=true;
+        System.exit(0);
     }
 
     @Override

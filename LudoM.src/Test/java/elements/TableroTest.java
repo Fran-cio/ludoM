@@ -1,5 +1,5 @@
-import elements.Casilla;
-import elements.Tablero;
+package elements;
+
 import org.junit.jupiter.api.Test;
 import strategy.status.*;
 
