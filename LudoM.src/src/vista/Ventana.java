@@ -137,7 +137,7 @@ public class Ventana extends Canvas implements Runnable{
             mostrar();
 
             if(System.nanoTime() - referenciaContador > NS_POR_SEGUNDO){
-                ventana.setTitle(NOMBRE+" || APS: "+aps+" || FPS: "+fps);
+                ventana.setTitle(NOMBRE+" || APS: "+ aps +" || FPS: "+ fps);
                 aps=0;
                 fps=0;
                 referenciaContador = System.nanoTime();
