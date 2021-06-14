@@ -2,7 +2,7 @@ package strategy.jugador;
 
 import elements.Ficha;
 import elements.Tablero;
-import org.testng.internal.collections.Pair;
+import org.testng.internal.collections.*;
 
 public class Player_1 implements Player{
     private Ficha[]     arrFicha;

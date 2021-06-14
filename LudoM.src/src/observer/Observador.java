@@ -1,5 +1,7 @@
 package observer;
 
+import elements.Buzon;
+
 public interface Observador {
-    public void actualizar();
+    public void mostrar(Buzon buzon);
 }

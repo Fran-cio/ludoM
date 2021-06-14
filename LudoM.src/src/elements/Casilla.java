@@ -60,4 +60,8 @@ public class Casilla {
     public void removeFicha(Ficha f){
         acumfichas.remove(f);
     }
+
+    public Vector<Ficha> getAcumfichas() {
+        return acumfichas;
+    }
 }
