@@ -12,9 +12,7 @@ public class Partida implements Sujeto,Runnable {
     protected final Dado          dado;
     protected Tablero             tablero;
     protected Jugador[]           arrJugadores;
-    protected Vector<Ficha>       arrFichas;
     protected Vector<Observador>  arrObserver;
-    protected int                 tiempoPart;
     protected boolean             terminada;
     protected int                 nextplayer;
     public final Thread              thread;
@@ -42,7 +40,6 @@ public class Partida implements Sujeto,Runnable {
 
     }
     public Partida(int numeroJugadores){
-        Teclado teclado= new Teclado();
         thread= new Thread(this,"Partida");
         tablero=new Tablero(this);
         dado=   new Dado();
@@ -88,28 +85,12 @@ public class Partida implements Sujeto,Runnable {
 
     }
 
-    public void pausar(){
-
-    }
-
-    public void reanudar(){
-
-    }
-
     public void terminar(){
         terminada=true;
         //System.exit(0);
     }
     public void setNum(int n){
         arrJugadores[nextplayer].setNum(n);
-    }
-
-    public Jugador[] getArrJugadores() {
-        return arrJugadores;
-    }
-
-    public int getNextplayer() {
-        return nextplayer;
     }
 
     @Override
@@ -124,10 +105,9 @@ public class Partida implements Sujeto,Runnable {
 
     @Override
     public void mostrar(Casilla[][] casillas, int valorDado,String siguienteJugador, String jugada, String infoExtra) {
-        for(int i = 0 ; i < arrObserver.size() ; i++){
-            Observador observer = (Observador) arrObserver.get(i);
-            Buzon buzon= new Buzon(casillas,  valorDado,siguienteJugador, jugada, infoExtra);
-            observer.mostrar(buzon);
+        for (Observador observador : arrObserver) {
+            Buzon buzon = new Buzon(casillas, valorDado, siguienteJugador, jugada, infoExtra);
+            ((Observador) observador).mostrar(buzon);
         }
     }
 

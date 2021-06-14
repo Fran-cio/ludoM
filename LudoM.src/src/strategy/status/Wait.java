@@ -28,7 +28,7 @@ public class Wait implements Status {
             Pair act=   ficha.getCamino()[ficha.getPuntero()];
             tab.RemoveFicha((int)act.first(),(int)act.second(),ficha);
             tab.Setficha((int)aux.first(),(int)aux.second(),ficha,1);
-            System.out.println("Ficha: "+(ficha.getIdF()+1)+" salto a la casilla: "+(int)ficha.getCamino()[ficha.getPuntero()].first()+";"+(int)ficha.getCamino()[ficha.getPuntero()].second());
+            System.out.println("Ficha: "+(ficha.getIdF()+1)+" salto a la casilla: "+ ficha.getCamino()[ficha.getPuntero()].first() +";"+ ficha.getCamino()[ficha.getPuntero()].second());
             return true;
         }
         System.out.println("Sigo esperando...");
@@ -42,9 +42,6 @@ public class Wait implements Status {
 
     @Override
     public boolean jugadaposible(int n) {
-        if(n==6){
-            return true;
-        }
-        return false;
+        return n == 6;
     }
 }

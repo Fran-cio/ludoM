@@ -24,7 +24,7 @@ public class RectaFinal implements Status{
             Pair act=   ficha.getCamino()[ficha.getPuntero()];
             tab.RemoveFicha((int)act.first(),(int)act.second(),ficha);
             tab.Setficha((int)aux.first(),(int)aux.second(),ficha,n);
-            System.out.println("Ficha: "+(ficha.getIdF()+1)+" salto a la casilla: "+(int)ficha.getCamino()[ficha.getPuntero()].first()+";"+(int)ficha.getCamino()[ficha.getPuntero()].second());
+            System.out.println("Ficha: "+(ficha.getIdF()+1)+" salto a la casilla: "+ ficha.getCamino()[ficha.getPuntero()].first() +";"+ ficha.getCamino()[ficha.getPuntero()].second());
             if(ficha.getPuntero()==57){
                 System.out.println("Ficha: "+(ficha.getIdF()+1)+" ha ganado");
             }
@@ -41,14 +41,7 @@ public class RectaFinal implements Status{
 
     @Override
     public boolean jugadaposible(int n) {
-        if(n<=Resto){
-            return true;
-        }
-        return false;
-    }
-
-    public void setResto(int resto) {
-        Resto = resto;
+        return n <= Resto;
     }
 
     @Override

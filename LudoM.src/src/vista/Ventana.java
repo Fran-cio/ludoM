@@ -11,7 +11,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferInt;
 import java.io.IOException;
 
 public class Ventana extends Canvas implements Runnable, Observador {
@@ -27,23 +26,18 @@ public class Ventana extends Canvas implements Runnable, Observador {
     private static int aps=0;
     private static int fps=0;
 
-    private static int x=0;
-    private static int y=0;
-
     private static JFrame ventana;
     private static Partida partida;
     private static HistorialJug historialJug;
 
     private static Thread thread;
     private static Teclado teclado;
-    private static Pantalla pantalla;
 
     private static BufferedImage fondo;
     private static BufferedImage fichaAmarilla;
     private static BufferedImage fichaVerde;
     private static BufferedImage ficharoja;
     private static BufferedImage fichaAzul;
-    private static BufferedImage shield;
     private static BufferedImage fichaAmarillap;
     private static BufferedImage fichaVerdep;
     private static BufferedImage ficharojap;
@@ -64,7 +58,6 @@ public class Ventana extends Canvas implements Runnable, Observador {
             fichaVerde = ImageIO.read(Ventana.class.getResource("/texturas/PiezaVerde.png"));
             ficharoja = ImageIO.read(Ventana.class.getResource("/texturas/PiezaRoja.png"));
             fichaAzul = ImageIO.read(Ventana.class.getResource("/texturas/PiezaAzul.png"));
-            shield = ImageIO.read(Ventana.class.getResource("/texturas/Shield.png"));
             fichaAmarillap = ImageIO.read(Ventana.class.getResource("/texturas/PiezaAmarillaP.png"));
             fichaVerdep = ImageIO.read(Ventana.class.getResource("/texturas/PiezaVerdeP.png"));
             ficharojap = ImageIO.read(Ventana.class.getResource("/texturas/PiezaRojaP.png"));
@@ -81,24 +74,20 @@ public class Ventana extends Canvas implements Runnable, Observador {
             e.printStackTrace();
         }
     }
-    private static BufferedImage imagen = new BufferedImage(ANCHO,ALTO,BufferedImage.TYPE_INT_RGB);
-    private static int[] pixeles = ((DataBufferInt) imagen.getRaster().getDataBuffer()).getData();
+
     private static final ImageIcon icono = new ImageIcon(Ventana.class.getResource("/icono/TdeT.png"));
-    private static Image p;
 
     public Ventana(Partida partida, Teclado tec) throws HeadlessException {
         Ventana.partida = partida;
         partida.registrar(this);
         setPreferredSize(new Dimension(ANCHO,ALTO));
 
-        pantalla = new Pantalla(ANCHO,ALTO);
-        this.teclado= tec;
+        teclado= tec;
         addKeyListener(teclado);
 
         historialJug= new HistorialJug(partida);
 
         ventana= new JFrame(NOMBRE);
-        //ventana.setPreferredSize(new Dimension(ANCHO+200,ALTO));
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ventana.setResizable(false);
         ventana.setIconImage(icono.getImage());
@@ -197,94 +186,86 @@ public class Ventana extends Canvas implements Runnable, Observador {
         }else if(valorDado==6){
             g.drawImage(Dado6, 240-16, 240-16, 32, 32, null);
         }
-        if(turno=="Amarillo"){
-            g.drawImage(placeHolder, 5 * puntCasilla, (14-5) * puntCasilla  , 32, 32, null);
-        }else if(turno=="Verde"){
-            g.drawImage(placeHolder, 5 * puntCasilla, (14-9) * puntCasilla  , 32, 32, null);
-        }else if(turno=="Rojo"){
-            g.drawImage(placeHolder, 9 * puntCasilla, (14-9) * puntCasilla  , 32, 32, null);
-        }else if(turno=="Azul"){
-            g.drawImage(placeHolder, 9 * puntCasilla, (14-5) * puntCasilla  , 32, 32, null);
+        switch (turno) {
+            case "Amarillo" -> g.drawImage(placeHolder, 5 * puntCasilla, (14 - 5) * puntCasilla, 32, 32, null);
+            case "Verde" -> g.drawImage(placeHolder, 5 * puntCasilla, (14 - 9) * puntCasilla, 32, 32, null);
+            case "Rojo" -> g.drawImage(placeHolder, 9 * puntCasilla, (14 - 9) * puntCasilla, 32, 32, null);
+            case "Azul" -> g.drawImage(placeHolder, 9 * puntCasilla, (14 - 5) * puntCasilla, 32, 32, null);
         }
         for(int i=0; i!=15 ; i++) {
             for (int j = 0; j != 15; j++) {
                 if (casillas[i][j].getAcumfichas().size() != 0) {
                     if(casillas[i][j].getAcumfichas().firstElement().getStatus().getState().equals("Wait")){
-                        if(casillas[i][j].getAcumfichas().firstElement().getColorF().equals("Amarillo")){
-                            for(int k=0; k!=casillas[i][j].getAcumfichas().size(); k++){
-                                if (k==0) {
-                                    g.drawImage(fichaAmarilla, i * puntCasilla - 48, (14-j) * puntCasilla - 16, 32, 32, null);
-                                }else if(k==1){
-                                    g.drawImage(fichaAmarilla, i * puntCasilla - 48, (14-j) * puntCasilla - 80, 32, 32, null);
-                                }else if(k==2){
-                                    g.drawImage(fichaAmarilla, i * puntCasilla - 112, (14-j) * puntCasilla - 16, 32, 32, null);
+                        switch (casillas[i][j].getAcumfichas().firstElement().getColorF()) {
+                            case "Amarillo":
+                                for (int k = 0; k != casillas[i][j].getAcumfichas().size(); k++) {
+                                    if (k == 0) {
+                                        g.drawImage(fichaAmarilla, i * puntCasilla - 48, (14 - j) * puntCasilla - 16, 32, 32, null);
+                                    } else if (k == 1) {
+                                        g.drawImage(fichaAmarilla, i * puntCasilla - 48, (14 - j) * puntCasilla - 80, 32, 32, null);
+                                    } else if (k == 2) {
+                                        g.drawImage(fichaAmarilla, i * puntCasilla - 112, (14 - j) * puntCasilla - 16, 32, 32, null);
+                                    } else if (k == 3) {
+                                        g.drawImage(fichaAmarilla, i * puntCasilla - 112, (14 - j) * puntCasilla - 80, 32, 32, null);
+                                    }
                                 }
-                                else if(k==3){
-                                    g.drawImage(fichaAmarilla, i * puntCasilla - 112, (14-j) * puntCasilla - 80, 32, 32, null);
+                                break;
+                            case "Verde":
+                                for (int k = 0; k != casillas[i][j].getAcumfichas().size(); k++) {
+                                    if (k == 0) {
+                                        g.drawImage(fichaVerde, i * puntCasilla + 16, (14 - j) * puntCasilla - 48, 32, 32, null);
+                                    } else if (k == 1) {
+                                        g.drawImage(fichaVerde, i * puntCasilla + 16, (14 - j) * puntCasilla - 112, 32, 32, null);
+                                    } else if (k == 2) {
+                                        g.drawImage(fichaVerde, i * puntCasilla + 80, (14 - j) * puntCasilla - 48, 32, 32, null);
+                                    } else if (k == 3) {
+                                        g.drawImage(fichaVerde, i * puntCasilla + 80, (14 - j) * puntCasilla - 112, 32, 32, null);
+                                    }
                                 }
-                            }
-                        }else if (casillas[i][j].getAcumfichas().firstElement().getColorF().equals("Verde")){
-                            for(int k=0; k!=casillas[i][j].getAcumfichas().size(); k++){
-                                if (k==0) {
-                                    g.drawImage(fichaVerde, i * puntCasilla + 16, (14-j) * puntCasilla -48, 32, 32, null);
-                                }else if(k==1){
-                                    g.drawImage(fichaVerde, i * puntCasilla + 16, (14-j) * puntCasilla - 112, 32, 32, null);
-                                }else if(k==2){
-                                    g.drawImage(fichaVerde, i * puntCasilla + 80, (14-j) * puntCasilla - 48, 32, 32, null);
+                                break;
+                            case "Rojo":
+                                for (int k = 0; k != casillas[i][j].getAcumfichas().size(); k++) {
+                                    if (k == 0) {
+                                        g.drawImage(ficharoja, i * puntCasilla + 48, (14 - j) * puntCasilla + 16, 32, 32, null);
+                                    } else if (k == 1) {
+                                        g.drawImage(ficharoja, i * puntCasilla + 48, (14 - j) * puntCasilla + 80, 32, 32, null);
+                                    } else if (k == 2) {
+                                        g.drawImage(ficharoja, i * puntCasilla + 112, (14 - j) * puntCasilla + 16, 32, 32, null);
+                                    } else if (k == 3) {
+                                        g.drawImage(ficharoja, i * puntCasilla + 112, (14 - j) * puntCasilla + 80, 32, 32, null);
+                                    }
                                 }
-                                else if(k==3){
-                                    g.drawImage(fichaVerde, i * puntCasilla + 80, (14-j) * puntCasilla - 112, 32, 32, null);
+                                break;
+                            case "Azul":
+                                for (int k = 0; k != casillas[i][j].getAcumfichas().size(); k++) {
+                                    if (k == 0) {
+                                        g.drawImage(fichaAzul, i * puntCasilla - 16, (14 - j) * puntCasilla + 48, 32, 32, null);
+                                    } else if (k == 1) {
+                                        g.drawImage(fichaAzul, i * puntCasilla - 16, (14 - j) * puntCasilla + 112, 32, 32, null);
+                                    } else if (k == 2) {
+                                        g.drawImage(fichaAzul, i * puntCasilla - 80, (14 - j) * puntCasilla + 48, 32, 32, null);
+                                    } else if (k == 3) {
+                                        g.drawImage(fichaAzul, i * puntCasilla - 80, (14 - j) * puntCasilla + 112, 32, 32, null);
+                                    }
                                 }
-                            }
-                        }else if (casillas[i][j].getAcumfichas().firstElement().getColorF().equals("Rojo")){
-                            for(int k=0; k!=casillas[i][j].getAcumfichas().size(); k++){
-                                if (k==0) {
-                                    g.drawImage(ficharoja, i * puntCasilla + 48, (14-j) * puntCasilla + 16, 32, 32, null);
-                                }else if(k==1){
-                                    g.drawImage(ficharoja, i * puntCasilla + 48, (14-j) * puntCasilla + 80, 32, 32, null);
-                                }else if(k==2){
-                                    g.drawImage(ficharoja, i * puntCasilla + 112, (14-j) * puntCasilla + 16, 32, 32, null);
-                                }
-                                else if(k==3){
-                                    g.drawImage(ficharoja, i * puntCasilla + 112, (14-j) * puntCasilla + 80, 32, 32, null);
-                                }
-                            }
-                        }else if (casillas[i][j].getAcumfichas().firstElement().getColorF().equals("Azul")){
-                            for(int k=0; k!=casillas[i][j].getAcumfichas().size(); k++){
-                                if (k==0) {
-                                    g.drawImage(fichaAzul, i * puntCasilla - 16, (14-j) * puntCasilla + 48, 32, 32, null);
-                                }else if(k==1){
-                                    g.drawImage(fichaAzul, i * puntCasilla - 16, (14-j) * puntCasilla + 112, 32, 32, null);
-                                }else if(k==2){
-                                    g.drawImage(fichaAzul, i * puntCasilla - 80, (14-j) * puntCasilla + 48, 32, 32, null);
-                                }
-                                else if(k==3){
-                                    g.drawImage(fichaAzul, i * puntCasilla - 80, (14-j) * puntCasilla + 112, 32, 32, null);
-                                }
-                            }
+                                break;
                         }
                     }else if(casillas[i][j].getAcumfichas().firstElement().getStatus().getState().equals("Protected")){
                         for(int k=0; k!=casillas[i][j].getAcumfichas().size(); k++){
-                            if(casillas[i][j].getAcumfichas().get(k).getColorF().equals("Amarillo")){
-                                g.drawImage(fichaAmarillap, (i * puntCasilla-( 2*casillas[i][j].getAcumfichas().size()))+(32*k)/casillas[i][j].getAcumfichas().size() , (14-j) * puntCasilla , 32/casillas[i][j].getAcumfichas().size(), 32/casillas[i][j].getAcumfichas().size() , null);
-                            }else if(casillas[i][j].getAcumfichas().get(k).getColorF().equals("Verde")){
-                                g.drawImage(fichaVerdep, (i * puntCasilla-( 2*casillas[i][j].getAcumfichas().size()))+(32*k)/casillas[i][j].getAcumfichas().size() , (14-j) * puntCasilla , 32/casillas[i][j].getAcumfichas().size(), 32/casillas[i][j].getAcumfichas().size() , null);
-                            }else if(casillas[i][j].getAcumfichas().get(k).getColorF().equals("Rojo")){
-                                g.drawImage(ficharojap, (i * puntCasilla-( 2*casillas[i][j].getAcumfichas().size()))+(32*k)/casillas[i][j].getAcumfichas().size() , (14-j) * puntCasilla , 32/casillas[i][j].getAcumfichas().size(), 32/casillas[i][j].getAcumfichas().size() , null);
-                            }else if(casillas[i][j].getAcumfichas().get(k).getColorF().equals("Azul")){
-                                g.drawImage(fichaAzulp, (i * puntCasilla-( 2*casillas[i][j].getAcumfichas().size()))+(32*k)/casillas[i][j].getAcumfichas().size() , (14-j) * puntCasilla , 32/casillas[i][j].getAcumfichas().size(), 32/casillas[i][j].getAcumfichas().size() , null);
+                            switch (casillas[i][j].getAcumfichas().get(k).getColorF()) {
+                                case "Amarillo" -> g.drawImage(fichaAmarillap, (i * puntCasilla - (2 * casillas[i][j].getAcumfichas().size())) + (32 * k) / casillas[i][j].getAcumfichas().size(), (14 - j) * puntCasilla, 32 / casillas[i][j].getAcumfichas().size(), 32 / casillas[i][j].getAcumfichas().size(), null);
+                                case "Verde" -> g.drawImage(fichaVerdep, (i * puntCasilla - (2 * casillas[i][j].getAcumfichas().size())) + (32 * k) / casillas[i][j].getAcumfichas().size(), (14 - j) * puntCasilla, 32 / casillas[i][j].getAcumfichas().size(), 32 / casillas[i][j].getAcumfichas().size(), null);
+                                case "Rojo" -> g.drawImage(ficharojap, (i * puntCasilla - (2 * casillas[i][j].getAcumfichas().size())) + (32 * k) / casillas[i][j].getAcumfichas().size(), (14 - j) * puntCasilla, 32 / casillas[i][j].getAcumfichas().size(), 32 / casillas[i][j].getAcumfichas().size(), null);
+                                case "Azul" -> g.drawImage(fichaAzulp, (i * puntCasilla - (2 * casillas[i][j].getAcumfichas().size())) + (32 * k) / casillas[i][j].getAcumfichas().size(), (14 - j) * puntCasilla, 32 / casillas[i][j].getAcumfichas().size(), 32 / casillas[i][j].getAcumfichas().size(), null);
                             }
                         }
                     }else{
                         for(int k=0; k!=casillas[i][j].getAcumfichas().size(); k++){
-                            if(casillas[i][j].getAcumfichas().get(k).getColorF().equals("Amarillo")){
-                                g.drawImage(fichaAmarilla, (i * puntCasilla-( 2*casillas[i][j].getAcumfichas().size()))+(32*k)/casillas[i][j].getAcumfichas().size() , (14-j) * puntCasilla , 32/casillas[i][j].getAcumfichas().size(), 32/casillas[i][j].getAcumfichas().size() , null);
-                            }else if(casillas[i][j].getAcumfichas().get(k).getColorF().equals("Verde")){
-                                g.drawImage(fichaVerde, (i * puntCasilla-( 2*casillas[i][j].getAcumfichas().size()))+(32*k)/casillas[i][j].getAcumfichas().size() , (14-j) * puntCasilla , 32/casillas[i][j].getAcumfichas().size(), 32/casillas[i][j].getAcumfichas().size() , null);
-                            }else if(casillas[i][j].getAcumfichas().get(k).getColorF().equals("Rojo")){
-                                g.drawImage(ficharoja, (i * puntCasilla-( 2*casillas[i][j].getAcumfichas().size()))+(32*k)/casillas[i][j].getAcumfichas().size() , (14-j) * puntCasilla , 32/casillas[i][j].getAcumfichas().size(), 32/casillas[i][j].getAcumfichas().size() , null);
-                            }else if(casillas[i][j].getAcumfichas().get(k).getColorF().equals("Azul")){
-                                g.drawImage(fichaAzul, (i * puntCasilla-( 2*casillas[i][j].getAcumfichas().size()))+(32*k)/casillas[i][j].getAcumfichas().size() , (14-j) * puntCasilla , 32/casillas[i][j].getAcumfichas().size(), 32/casillas[i][j].getAcumfichas().size() , null);
+                            switch (casillas[i][j].getAcumfichas().get(k).getColorF()) {
+                                case "Amarillo" -> g.drawImage(fichaAmarilla, (i * puntCasilla - (2 * casillas[i][j].getAcumfichas().size())) + (32 * k) / casillas[i][j].getAcumfichas().size(), (14 - j) * puntCasilla, 32 / casillas[i][j].getAcumfichas().size(), 32 / casillas[i][j].getAcumfichas().size(), null);
+                                case "Verde" -> g.drawImage(fichaVerde, (i * puntCasilla - (2 * casillas[i][j].getAcumfichas().size())) + (32 * k) / casillas[i][j].getAcumfichas().size(), (14 - j) * puntCasilla, 32 / casillas[i][j].getAcumfichas().size(), 32 / casillas[i][j].getAcumfichas().size(), null);
+                                case "Rojo" -> g.drawImage(ficharoja, (i * puntCasilla - (2 * casillas[i][j].getAcumfichas().size())) + (32 * k) / casillas[i][j].getAcumfichas().size(), (14 - j) * puntCasilla, 32 / casillas[i][j].getAcumfichas().size(), 32 / casillas[i][j].getAcumfichas().size(), null);
+                                case "Azul" -> g.drawImage(fichaAzul, (i * puntCasilla - (2 * casillas[i][j].getAcumfichas().size())) + (32 * k) / casillas[i][j].getAcumfichas().size(), (14 - j) * puntCasilla, 32 / casillas[i][j].getAcumfichas().size(), 32 / casillas[i][j].getAcumfichas().size(), null);
                             }
                         }
                     }
@@ -324,7 +305,6 @@ public class Ventana extends Canvas implements Runnable, Observador {
 
             while (delta>=1){
                 actualizar();
-                //mostrar(partida.getTablero().getTablero());
                 delta--;
             }
 
@@ -337,6 +317,7 @@ public class Ventana extends Canvas implements Runnable, Observador {
                 referenciaContador = System.nanoTime();
             }
         }
+        detener();
 
     }
 }
