@@ -90,17 +90,17 @@ public class Jugador {
         String s="";
         s=s+"<html>Jugador: "+tablero.partida.arrJugadores[0].getPlayer().getColor()+"<p>"+
                 "Ficha 1: "+tablero.partida.arrJugadores[0].player.getFichas()[0].status.getState()+
-                "("+ tablero.partida.arrJugadores[0].player.getFichas()[0].getCamino()[tablero.partida.arrJugadores[0].player.getFichas()[0].getPuntero()].first() +","+
+                "("+ tablero.partida.arrJugadores[0].player.getFichas()[0].getCamino()[tablero.partida.arrJugadores[0].player.getFichas()[0].getPuntero()].first()+","+
                 tablero.partida.arrJugadores[0].player.getFichas()[0].getCamino()[tablero.partida.arrJugadores[0].player.getFichas()[0].getPuntero()].second() +")"+"<p>"+
                 "Ficha 2: "+tablero.partida.arrJugadores[0].player.getFichas()[1].status.getState()+
                 "("+ tablero.partida.arrJugadores[0].player.getFichas()[1].getCamino()[tablero.partida.arrJugadores[0].player.getFichas()[1].getPuntero()].first() +","+
                 tablero.partida.arrJugadores[0].player.getFichas()[1].getCamino()[tablero.partida.arrJugadores[0].player.getFichas()[1].getPuntero()].second() +")"+"<p>"+
                 "Ficha 3: "+tablero.partida.arrJugadores[0].player.getFichas()[2].status.getState()+
-                "("+ tablero.partida.arrJugadores[0].player.getFichas()[2].getCamino()[tablero.partida.arrJugadores[0].player.getFichas()[1].getPuntero()].first() +","+
-                tablero.partida.arrJugadores[0].player.getFichas()[2].getCamino()[tablero.partida.arrJugadores[0].player.getFichas()[1].getPuntero()].second() +")"+"<p>"+
+                "("+ tablero.partida.arrJugadores[0].player.getFichas()[2].getCamino()[tablero.partida.arrJugadores[0].player.getFichas()[2].getPuntero()].first() +","+
+                tablero.partida.arrJugadores[0].player.getFichas()[2].getCamino()[tablero.partida.arrJugadores[0].player.getFichas()[2].getPuntero()].second() +")"+"<p>"+
                 "Ficha 4: "+tablero.partida.arrJugadores[0].player.getFichas()[3].status.getState()+
-                "("+ tablero.partida.arrJugadores[0].player.getFichas()[3].getCamino()[tablero.partida.arrJugadores[0].player.getFichas()[1].getPuntero()].first() +","+
-                tablero.partida.arrJugadores[0].player.getFichas()[3].getCamino()[tablero.partida.arrJugadores[0].player.getFichas()[1].getPuntero()].second() +")"+"<p><p>"+
+                "("+ tablero.partida.arrJugadores[0].player.getFichas()[3].getCamino()[tablero.partida.arrJugadores[0].player.getFichas()[3].getPuntero()].first() +","+
+                tablero.partida.arrJugadores[0].player.getFichas()[3].getCamino()[tablero.partida.arrJugadores[0].player.getFichas()[3].getPuntero()].second() +")"+"<p><p>"+
 
                 "Jugador: "+tablero.partida.arrJugadores[1].getPlayer().getColor()+"<p>"+
                 "Ficha 1: "+tablero.partida.arrJugadores[1].player.getFichas()[0].status.getState()+
