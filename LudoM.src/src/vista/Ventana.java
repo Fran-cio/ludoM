@@ -11,6 +11,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
 public class Ventana extends Canvas implements Runnable, Observador {
@@ -53,29 +54,29 @@ public class Ventana extends Canvas implements Runnable, Observador {
     static {
         try {
 
-            fondo = ImageIO.read(Ventana.class.getResource("/texturas/Ludo_Board_main.png"));
-            fichaAmarilla = ImageIO.read(Ventana.class.getResource("/texturas/PiezaAmarilla.png"));
-            fichaVerde = ImageIO.read(Ventana.class.getResource("/texturas/PiezaVerde.png"));
-            ficharoja = ImageIO.read(Ventana.class.getResource("/texturas/PiezaRoja.png"));
-            fichaAzul = ImageIO.read(Ventana.class.getResource("/texturas/PiezaAzul.png"));
-            fichaAmarillap = ImageIO.read(Ventana.class.getResource("/texturas/PiezaAmarillaP.png"));
-            fichaVerdep = ImageIO.read(Ventana.class.getResource("/texturas/PiezaVerdeP.png"));
-            ficharojap = ImageIO.read(Ventana.class.getResource("/texturas/PiezaRojaP.png"));
-            fichaAzulp = ImageIO.read(Ventana.class.getResource("/texturas/PiezaAzulP.png"));
-            Dado1 = ImageIO.read(Ventana.class.getResource("/texturas/Dado1.png"));
-            Dado2 = ImageIO.read(Ventana.class.getResource("/texturas/Dado2.png"));
-            Dado3 = ImageIO.read(Ventana.class.getResource("/texturas/Dado3.png"));
-            Dado4 = ImageIO.read(Ventana.class.getResource("/texturas/Dado4.png"));
-            Dado5 = ImageIO.read(Ventana.class.getResource("/texturas/Dado5.png"));
-            Dado6 = ImageIO.read(Ventana.class.getResource("/texturas/Dado6.png"));
-            placeHolder = ImageIO.read(Ventana.class.getResource("/texturas/placeholder.png"));
+            fondo = ImageIO.read(new File("LudoM.src/recursos//texturas/Ludo_Board_main.png"));
+            fichaAmarilla = ImageIO.read(new File("LudoM.src/recursos//texturas/PiezaAmarilla.png"));
+            fichaVerde = ImageIO.read(new File("LudoM.src/recursos//texturas/PiezaVerde.png"));
+            ficharoja = ImageIO.read(new File("LudoM.src/recursos//texturas/PiezaRoja.png"));
+            fichaAzul = ImageIO.read(new File("LudoM.src/recursos//texturas/PiezaAzul.png"));
+            fichaAmarillap = ImageIO.read(new File("LudoM.src/recursos//texturas/PiezaAmarillaP.png"));
+            fichaVerdep = ImageIO.read(new File("LudoM.src/recursos//texturas/PiezaVerdeP.png"));
+            ficharojap = ImageIO.read(new File("LudoM.src/recursos//texturas/PiezaRojaP.png"));
+            fichaAzulp = ImageIO.read(new File("LudoM.src/recursos//texturas/PiezaAzulP.png"));
+            Dado1 = ImageIO.read(new File("LudoM.src/recursos//texturas/Dado1.png"));
+            Dado2 = ImageIO.read(new File("LudoM.src/recursos//texturas/Dado2.png"));
+            Dado3 = ImageIO.read(new File("LudoM.src/recursos//texturas/Dado3.png"));
+            Dado4 = ImageIO.read(new File("LudoM.src/recursos//texturas/Dado4.png"));
+            Dado5 = ImageIO.read(new File("LudoM.src/recursos//texturas/Dado5.png"));
+            Dado6 = ImageIO.read(new File("LudoM.src/recursos//texturas/Dado6.png"));
+            placeHolder = ImageIO.read(new File("LudoM.src/recursos//texturas/placeholder.png"));
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private static final ImageIcon icono = new ImageIcon(Ventana.class.getResource("/icono/TdeT.png"));
+    private static final ImageIcon icono = new ImageIcon("LudoM.src/recursos/icono/TdeT.png");
 
     public Ventana(Partida partida, Teclado tec) throws HeadlessException {
         Ventana.partida = partida;

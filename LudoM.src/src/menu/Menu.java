@@ -1,11 +1,13 @@
 package menu;
 
+import vista.Ventana;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class Menu {
 
-    private static final ImageIcon icono = new ImageIcon("./LudoM.src/recursos/icono/TdeT.png");
+    private static final ImageIcon icono = new ImageIcon("LudoM.src/recursos/icono/TdeT.png");
 
     int jug;
 
