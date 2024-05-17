@@ -42,7 +42,7 @@
     <a href="https://github.com/Fran-cio/ludoM"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/Fran-cio/ludoM/ludoM">View Demo</a>
+    <a href="https://github.com/Fran-cio/ludoM">View Demo</a>
     ·
     <a href="https://github.com/Fran-cio/ludoM/issues">Report Bug</a>
     ·
